@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="jp.co.yumemi.android.code_check.view.RepoSearchViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TopActivity">
+    tools:context=".MainActivity">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/searchBar"
@@ -36,6 +43,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/searchInputText"
+                android:text="@={viewModel.searchQuery}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
@@ -58,3 +66,4 @@
         app:layout_constraintTop_toBottomOf="@id/searchBar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
