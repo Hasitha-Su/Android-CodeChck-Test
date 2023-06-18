@@ -73,14 +73,6 @@ class RepoSearchFragment : Fragment(R.layout.fragment_repo_search) {
         _binding = null
     }
 
-//    private fun gotoRepositoryFragment(item: RepoItem) {
-//        val action = RepoSearchFragmentDirections.actionRepositoriesFragmentToRepositoryFragment(item)
-//        findNavController().navigate(action)
-//    }
-//    private fun gotoRepositoryFragment(item: RepoItem) {
-//        viewModel.selectedItem.value = item
-//        findNavController().navigate(R.id.action_repositoriesFragment_to_repositoryFragment)
-//    }
     private fun gotoRepositoryFragment(item: RepoItem) {
         detailsViewModel.selectItem(item)
         findNavController().navigate(R.id.action_repositoriesFragment_to_repositoryFragment)
