@@ -15,6 +15,4 @@ import dagger.hilt.android.HiltAndroidApp
  * @constructor Creates an instance of the MainApplication class.
  */
 @HiltAndroidApp
-class MainApplication : Application() {
-
-}
+class MainApplication : Application()

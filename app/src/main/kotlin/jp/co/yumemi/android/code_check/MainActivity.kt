@@ -14,6 +14,4 @@ import dagger.hilt.android.AndroidEntryPoint
  * @constructor Creates an instance of the MainActivity class.
  */
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
-
-}
+class MainActivity : AppCompatActivity(R.layout.activity_main)
