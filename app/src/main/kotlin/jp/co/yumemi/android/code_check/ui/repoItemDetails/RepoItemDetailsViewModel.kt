@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.code_check.view
+package jp.co.yumemi.android.code_check.ui.repoItemDetails
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
