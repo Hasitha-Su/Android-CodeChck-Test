@@ -32,10 +32,12 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.Shadows
 import org.robolectric.annotation.Config
 
+
 @HiltAndroidTest
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [Build.VERSION_CODES.P], application = HiltTestApplication::class)
 class RepoSearchFragmentTest {
+
 
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
@@ -79,25 +81,20 @@ class RepoSearchFragmentTest {
         binding.executePendingBindings()
     }
 
-
     @Test
     fun searchInput_performsSearch_displaysResults() {
-        // Prepare LiveData for ViewModel
+
         val searchQueryLiveData = MutableLiveData<String>()
         val resultsLiveData = MutableLiveData<List<RepoItem>>()
 
-        // Mock the ViewModel's responses
         every { mockViewModel.searchQuery } returns searchQueryLiveData
         every { mockViewModel.results } returns resultsLiveData
 
-        // Set the value to LiveData
         val searchString = "repo1"
         searchQueryLiveData.value = searchString
 
-        // Now set the text in the TextInputEditText using View Binding
         binding.searchInputText.setText(searchString)
 
-        // Prepare the expected results
         val expectedItems = listOf(
             RepoItem(
                 name = "repo1",
@@ -110,44 +107,32 @@ class RepoSearchFragmentTest {
             )
         )
 
-        // Mock the ViewModel to return the expected results when results LiveData is observed
         resultsLiveData.value = expectedItems
 
-        // Trigger the onSearchInitiated method to initiate the search operation
         fragment.onSearchInitiated()
 
-        // Wait for the main thread to process all current events and updates to Views.
         Shadows.shadowOf(Looper.getMainLooper()).idle()
 
-        // Define an observer for the LiveData to capture the changes
         val observer = Observer<List<RepoItem>> {}
 
         try {
-            // Add observer to LiveData
             mockViewModel.results.observeForever(observer)
             resultsLiveData.value = expectedItems
 
-            // Now we can check if the RecyclerView has been updated with expectedItems.
-            // Since we know that the RecyclerView adapter is of type CustomAdapter, we can cast it.
             val recyclerView = binding.recyclerView
             val adapter = recyclerView.adapter as? CustomAdapter
                 ?: throw AssertionError("RecyclerView adapter is not of type CustomAdapter")
 
-            // Check the item count in the adapter.
             assertEquals("Adapter item count", expectedItems.size, adapter.itemCount)
 
-            // Optionally, you can loop through the items and compare them with what's expected.
             expectedItems.forEachIndexed { index, repoItem ->
                 val actualItem = adapter.currentList[index]
                 assertEquals(repoItem.name, actualItem.name)
-                // ... assert other properties as needed
             }
         } finally {
-            // Clean up observer
             mockViewModel.results.removeObserver(observer)
         }
 
-        // Optionally, verify that the ViewModel's search function was called.
         verify { mockViewModel.search() }
 
     }
