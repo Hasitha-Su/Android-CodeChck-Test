@@ -8,62 +8,78 @@
             name="viewModel"
             type="jp.co.yumemi.android.code_check.view.RepoSearchViewModel" />
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/searchBar"
-        android:layout_width="0dp"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_margin="12dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="8dp"
-        app:layout_constraintBottom_toTopOf="@id/recyclerView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_background"
+        tools:context=".MainActivity">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/searchInputLayout"
-            style="@style/TextInputLayoutNoBorder"
+        <LinearLayout
             android:layout_width="match_parent"
+            android:background="@drawable/gradient_color_background"
             android:layout_height="match_parent"
-            android:importantForAutofill="no"
-            app:endIconMode="clear_text"
-            app:endIconTint="@android:color/darker_gray"
-            app:hintTextColor="@android:color/darker_gray"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:startIconDrawable="@android:drawable/ic_menu_search"
-            app:startIconTint="@android:color/darker_gray">
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="40dp"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:text="Search GitHub" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/searchInputText"
-                android:text="@={viewModel.searchQuery}"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
+                android:layout_height="50dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/search_edit_background"
+                android:drawableStart="@drawable/search"
+                android:drawablePadding="8dp"
+                android:ems="10"
                 android:hint="@string/searchInputText_hint"
                 android:imeOptions="actionSearch"
                 android:inputType="text"
-                android:textSize="12sp" />
+                android:padding="12dp"
+                android:text="@={viewModel.searchQuery}"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="15sp"
+                />
 
-        </com.google.android.material.textfield.TextInputLayout>
+            <FrameLayout
+                android:id="@+id/overlayFrame"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#AA000000"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    </com.google.android.material.card.MaterialCardView>
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="@android:style/Widget.ProgressBar.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchBar" />
+            </FrameLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/searchInputText" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
