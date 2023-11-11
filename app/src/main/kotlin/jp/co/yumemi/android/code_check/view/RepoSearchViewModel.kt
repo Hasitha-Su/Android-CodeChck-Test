@@ -23,8 +23,13 @@ class RepoSearchViewModel @Inject constructor(private val itemRepository: Github
     private val _results = MutableLiveData<List<RepoItem>>()
     val results: LiveData<List<RepoItem>> get() = _results
     val searchQuery = MutableLiveData<String>()
+    val isLoading = MutableLiveData<Boolean>()
 
     fun search() = viewModelScope.launch {
+
+        //Progress bar should be visible
+        isLoading.value = true
+
         try {
             val response = itemRepository.getGithubRepoInfo(searchQuery.value ?: "")
             _results.value = response?.items
