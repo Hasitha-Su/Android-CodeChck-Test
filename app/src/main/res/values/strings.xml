@@ -6,5 +6,17 @@
     <string name="watchers">%1$d watchers</string>
     <string name="forks">%1$d forks</string>
     <string name="open_issues">%1$d open issues</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
+    <!-- BEGIN - Network Error Dialog Strings -->
+
+    <!-- Title for the network error dialog -->
+    <string name="network_error_title">No Internet Connection</string>
+    <!-- Message describing the network error -->
+    <string name="network_error_message">Please check your internet connection and try again.</string>
+    <!-- Text for the button to open device settings -->
+    <string name="open_settings">Open Settings</string>
+    <!-- Text for the button to dismiss the dialog -->
+    <string name="dismiss">Exit</string>
+    <!-- END - Network Error Dialog Strings -->
+
 </resources>
