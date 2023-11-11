@@ -62,6 +62,13 @@ class RepoSearchFragment : Fragment(R.layout.fragment_repo_search) {
 
         viewModel.results.observe(viewLifecycleOwner) { results ->
             (binding.recyclerView.adapter as? CustomAdapter)?.submitList(results)
+            viewModel.isLoading.postValue(false)
+        }
+
+        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            //Toggle visibility of the overlay and progress bar
+            binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+            binding.overlayFrame.visibility = if (isLoading) View.VISIBLE else View.GONE
         }
     }
 
@@ -141,6 +148,7 @@ class RepoSearchFragment : Fragment(R.layout.fragment_repo_search) {
                 val searchQuery = binding.searchInputText.text.toString()
 
                 if (searchQuery.isNotEmpty()) {
+                    (binding.recyclerView.adapter as? CustomAdapter)?.submitList(emptyList())
                     viewModel.search()
                 } else {
                     Toast.makeText(requireContext(), "Please enter a search query", Toast.LENGTH_SHORT).show()
