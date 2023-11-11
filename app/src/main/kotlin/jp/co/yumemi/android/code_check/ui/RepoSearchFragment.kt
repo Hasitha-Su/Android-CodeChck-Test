@@ -13,6 +13,7 @@ import jp.co.yumemi.android.code_check.databinding.FragmentRepoSearchBinding
 import jp.co.yumemi.android.code_check.view.RepoSearchViewModel
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.activityViewModels
@@ -137,7 +138,13 @@ class RepoSearchFragment : Fragment(R.layout.fragment_repo_search) {
         binding.searchInputText.setOnEditorActionListener { editText, action, _ ->
             if (action == EditorInfo.IME_ACTION_SEARCH) {
                 viewModel.searchQuery.value = editText.text.toString()
-                viewModel.search()
+                val searchQuery = binding.searchInputText.text.toString()
+
+                if (searchQuery.isNotEmpty()) {
+                    viewModel.search()
+                } else {
+                    Toast.makeText(requireContext(), "Please enter a search query", Toast.LENGTH_SHORT).show()
+                }
                 true
             } else false
         }
