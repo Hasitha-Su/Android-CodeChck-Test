@@ -26,11 +26,10 @@ class RepoItemDetailsFragment : Fragment(R.layout.fragment_repo_item_details) {
                     binding.apply {
                         ownerIconView.load(owner.avatarUrl)
                         nameView.text = name
-                        languageView.text = language
-                        starsView.text = getString(R.string.stars, stargazersCount)
-                        watchersView.text = getString(R.string.watchers, watchersCount)
-                        forksView.text = getString(R.string.forks, forksCount)
-                        openIssuesView.text = getString(R.string.open_issues, openIssuesCount)
+                        starsView.text = stargazersCount.toString()
+                        watchersView.text = watchersCount.toString()
+                        forksView.text = forksCount.toString()
+                        textDescription.text = textDescription.toString()
                     }
                 }
             }
