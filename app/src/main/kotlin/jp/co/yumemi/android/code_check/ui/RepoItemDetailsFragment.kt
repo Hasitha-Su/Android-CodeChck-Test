@@ -29,7 +29,7 @@ class RepoItemDetailsFragment : Fragment(R.layout.fragment_repo_item_details) {
                         starsView.text = stargazersCount.toString()
                         watchersView.text = watchersCount.toString()
                         forksView.text = forksCount.toString()
-                        textDescription.text = textDescription.toString()
+                        textDescription.text = description
                     }
                 }
             }
