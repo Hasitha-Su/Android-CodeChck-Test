@@ -23,5 +23,6 @@
     <string name="default_repo_item_title">JetBrains/kotlin</string>
     <string name="repo_item_image_content_desc">リポジトリアイテムの画像</string>
     <string name="search_github">ギットハブ を検索</string>
+    <string name="empty_query_error">検索クエリを入力してください</string>
     <!-- END - Repository Item UI Strings -->
 </resources>

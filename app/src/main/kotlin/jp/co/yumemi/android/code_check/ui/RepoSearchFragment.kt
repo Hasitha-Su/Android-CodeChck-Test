@@ -151,7 +151,7 @@ class RepoSearchFragment : Fragment(R.layout.fragment_repo_search) {
                     (binding.recyclerView.adapter as? CustomAdapter)?.submitList(emptyList())
                     viewModel.search()
                 } else {
-                    Toast.makeText(requireContext(), "Please enter a search query", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), R.string.empty_query_error, Toast.LENGTH_SHORT).show()
                 }
                 true
             } else false
