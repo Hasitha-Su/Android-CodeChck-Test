@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Android エンジニア コードチェック</string>
+    <string name="searchInputText_hint">GitHub のリポジトリを検索できるよー</string>
+    <string name="written_language">%sで書かれています</string>
+    <string name="stars">%1$d スター</string>
+    <string name="watchers">%1$d ウォッチャー</string>
+    <string name="forks">%1$d フォーク</string>
+    <string name="open_issues">%1$d オープンイシュー</string>
+
+    <!-- BEGIN - Network Error Dialog Strings -->
+    <string name="network_error_title">インターネット接続なし</string>
+    <string name="network_error_message">インターネット接続を確認して、もう一度お試しください。</string>
+    <string name="open_settings">設定を開く</string>
+    <string name="dismiss">閉じる</string>
+    <!-- END - Network Error Dialog Strings -->
+
+    <!-- BEGIN - Repository Item UI Strings -->
+    <string name="item_additional_information">アイテムに関する詳細情報</string>
+    <string name="item_additional_info_title">情報</string>
+    <string name="default_repo_fork_count">78</string>
+    <string name="default_repo_view_count">87</string>
+    <string name="default_repo_star_count">88</string>
+    <string name="default_repo_item_title">JetBrains/kotlin</string>
+    <string name="repo_item_image_content_desc">リポジトリアイテムの画像</string>
+    <string name="search_github">ギットハブ を検索</string>
+    <string name="empty_query_error">検索クエリを入力してください</string>
+    <!-- END - Repository Item UI Strings -->
+</resources>

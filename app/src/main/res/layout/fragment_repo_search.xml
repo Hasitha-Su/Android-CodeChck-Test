@@ -30,7 +30,7 @@
                 android:textColor="@color/white"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                android:text="Search GitHub" />
+                android:text="@string/search_github" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/searchInputText"

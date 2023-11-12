@@ -26,6 +26,8 @@
     <string name="default_repo_star_count">88</string>
     <string name="default_repo_item_title">JetBrains/kotlin</string>
     <string name="repo_item_image_content_desc">repo item image</string>
+    <string name="search_github">Search GitHub</string>
+    <string name="empty_query_error">Please enter a search query</string>
     <!-- END - Repository Item UI  Strings -->
 
 </resources>
